@@ -1,0 +1,61 @@
+
+<div class="topbar">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-theme">
+        <div class="container-fluid">
+            <a class="navbar-brakkknd mytxt font-weight-bolder h2 logotxt" routerLink="/home">ÕJÀ<i
+                    class="material-icons text-white ml-1" aria-hidden="true">shopping_cart</i></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-white active font-weight-bold" aria-current="page" routerLink="/home">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link text-white" routerLink="flash-sales">Flash Sales</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" *ngIf="this.myservice.logged==false">
+                            Login
+                        </a>
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" *ngIf="this.myservice.logged==true">
+                            {{presentUser}}
+                        </a>
+                        <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdown" id="userTarg">
+                            <li id="indexLogin" [ngClass]="{'d-none':this.myservice.logged!==false}"><a class="dropdown-item"><input class="btn mybg text-white" type="button"
+                                        value="LOGIN" data-toggle="modal" data-target="#myModal"></a></li>
+                            <li id="signOut" [ngClass]="{'d-none':this.myservice.logged==false}"><a class=""><input class="btn mybg text-white" type="button"
+                                        value="Sign out" id="signOutBtn" (click)="onSignOut()"></a></li>
+                            <hr class="dropdown-divider">
+                            <li id="indexCrtAcc" [ngClass]="{'d-none':this.myservice.logged!==false}"><a class="dropdown-item"><input class="btn btn-dark" type="button"
+                                        value="CREATE AN ACCOUNT" data-toggle="modal" data-target="#myModal" (click)="this.myservice.signup=true"></a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item my-alt-txt "><input type="button" class="btn btn-default" value="Support Center"></a></li>
+                        </ul>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Sell on
+                            ÕJÀ</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <input class="form-control me-2 m-1" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchInp">
+                    <button class="btn btn-outline-light m-1" type="submit" (click)="search()">Search</button>
+                </div>
+            </div>
+            <div><a routerLink = "cart-page"><i class="material-icons text-white ml-1" aria-hidden="true" routerLink="/cart-page">shopping_cart
+                    </i></a><sup id="cartUpdate" class="badge badge-danger mybg badge-pill ">{{this.myservice.cartCount}}</sup></div>
+
+        </div>
+    </nav>
+</div>
+<app-account-page ></app-account-page>

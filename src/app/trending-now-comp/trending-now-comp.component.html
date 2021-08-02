@@ -1,0 +1,23 @@
+<!-- Trending now section -->
+<div class="">
+    <div class="text-center">
+        <h2 class="text-danger">Trending Now</h2>
+    </div>
+    <div class="row mt-3 container mx-auto mb-3 text-center md-grid">
+        <div class="col-md-3 md-prd-card card prd-card shadow-lg" *ngFor = "let productCard of trendingProd">
+            <a routerLink = "/product-page"><img src="{{productCard.productimgSrc}}" class="mt-1" alt="maroon-bag" (click)="getProdDetails(productCard)"></a>
+            <div class="card-body">
+                <h5 class="card-title">{{productCard.productName}}</h5>
+                <p class="card-text text-danger">{{productCard.productPrice}}</p>
+                <p class="card-text text-mute"><del>{{productCard.productCost}}</del></p>
+                <a  class="btn btn-danger" routerLink = "/product-page" (click)="getProdDetails(productCard)" >Check</a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="container text-center">
+        <a class="btn text-danger  font-weight-bold">View more <i
+                class="fas fa-angle-double-right"></i></a>
+    </div>
+</div>
+    

@@ -1,0 +1,46 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="mt-2 text-center">
+        <h2>Sign up</h2>
+        <h5>with your social network</h5>
+        <a href=""><img class="mr-2" src="https://pics.freeicons.io/uploads/icons/png/2659939281579738432-512.png"
+                alt="" style="width:40px;"></a>
+        <a href=""><img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkAxTQOoe_09Sa-D0Wzagf59pdtKVM2sAAKcBH05ivd_QcQLbsHOSZqc057QHTC5Tkjxg&usqp=CAU"
+                alt="" style="width:50px;"></a>
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text fas fa-user"></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username" formControlName="username" required [ngClass]="{'is-invalid':!signupForm.get('username')?.valid && signupForm.get('username')?.touched}">
+    </div>
+    <span class="help-block" *ngIf="!signupForm.get('username')?.valid && signupForm.get('username')?.touched">Please enter a valid username</span>
+    <div class="input-group mt-3 mb-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text fas fa-envelope"></span>
+        </div>
+        <input type="email" class="form-control" placeholder="Email" formControlName="email" required [ngClass]="{'is-invalid':!signupForm.get('email')?.valid && signupForm.get('email')?.touched}">
+    </div>
+    <span class="help-block" *ngIf="!signupForm.get('email')?.valid && signupForm.get('email')?.touched">Please enter a valid email</span>
+    <div class="input-group mt-3 mb-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text fas fa-lock"></span>
+        </div>
+        <input type="{{textType}}" class="form-control " [ngClass]="{'is-invalid':!signupForm.get('password')?.valid && signupForm.get('password')?.touched}" placeholder="Password" formControlName="password" required>
+        <div class="input-group-append" *ngIf="textType=='password'">
+            <span class="input-group-text fas fa-eye" (click)="textType='text'"></span>
+        </div>
+        <div class="input-group-append" *ngIf="textType=='text'">
+            <span class="input-group-text fas fa-eye-slash" (click)="textType='password'"></span>
+        </div>
+    </div>
+    <span class="help-block d-block" *ngIf="!signupForm.get('password')?.valid && signupForm.get('password')?.touched">Please enter a valid password</span>
+    <input type="checkbox" name="" id=""><span class="ml-1 h6">I agree with ÕJÀ Terms and Conditions</span>
+    <div class="mt-2">
+        <button class="form-control btn btn-primary" type="submit" >Sign up</button>
+    </div>
+    <div class="text-center mt-2">
+                <p>Already registered? <span class="text-primary" (click)="this.myservice.signup=false;" style="cursor: pointer;">Login</span></p>
+            </div>
+</form>

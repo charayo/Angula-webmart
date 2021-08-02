@@ -1,0 +1,35 @@
+<div class="pt-4 mb-2 pb-3 card w-100 container card shadow mt-3 mb-2">
+    <div class="row">
+        <div class="col-4 text-center">
+            <img id="imageId" class="w-75 mt-4 prod-img" src="{{productDetails.productimgSrc}}" alt="">
+        </div>
+        <div class="col-8">
+            <h4 id="itemName">{{productDetails.productName}}</h4>
+            <span class="d-block" id="productBrand">{{productDetails.productBrand}}</span>
+            <span><i class="material-icons text-warning">star</i><i class="material-icons text-warning">star</i><i
+                    class="material-icons text-warning">star</i><i class="material-icons text-warning">star</i><i
+                    class="material-icons text-grey">star</i></span><span class="d-block">(4 ratings)</span>
+            <hr>
+            <h1 id="itemPrice">{{productDetails.productPrice}}</h1>
+            <span><del id="slashPrice">{{productDetails.productCost}}</del></span><span
+                class="bg-warning ml-1">-42%</span>
+            <hr>
+            
+            <div class="" id="addToCartDiv" name="">
+                <input type="button" id="addToCart" value="ADD TO CART" [class]="{'d-none':productClicked==true}"
+                    class="btn mybg mt-2 form-control text-white" (click)="addTo()" routerLink="/cart-page">
+            </div>
+            <div id="cartCtrl" [class]="{'d-none':productClicked==false}" class="mt-2">
+                <button id="minusBtn" [disabled]="cartPlusOne==false" class="btn btn-default minusBtn border mr-1 mybg" routerLink = "/cart-page" (click)="qtyDecre()">-</button><span
+                    id="itemNum" class="border pt-1 pr-2 pl-2 pb-2 mt-3 rounded font-weight-bold">{{qty}}</span><button
+                    id="plusBtn" class="btn btn-default border ml-1 mybg plusBtn" routerLink = "/cart-page" (click)="qtyIncre()">+
+                </button>
+                <div class="d-none" name="" id="theCodeName">codename</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card container w-100 mb-4 shadow pt-1">
+    <h4>Product details</h4>
+    <p class="" id="product-details">{{productDetails.productDetails}}</p>
+</div>

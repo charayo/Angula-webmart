@@ -1,0 +1,56 @@
+<div>
+    <h3 class="text-center">Your Cart : <span class="" >{{count}} </span> Item(s)</h3>
+    <hr>
+</div>
+
+<div *ngIf = "cartProducts.length>=1">
+    <div class="container card mt-2 mb-3 shadow-sm w-50" *ngFor="let productDetails of cartProducts">
+        <div class="row mb-2 text-center">
+            <div class="col-md-4 text-cen" id="imageTarget">
+                <img id="imageId" class="w-75 mt-4" src="{{productDetails.productimgSrc}}"
+                    alt="{{productDetails.productName}}">
+            </div>
+            <div class="col-md-8">
+                <div class="pt-4">
+                    <h4 class="">{{productDetails.productName}}</h4>
+                    <p class="">{{productDetails.productPrice}}</p>
+                    <hr>
+                    <div *ngIf= "productDetails.productQty==1">
+                        <button id="minusBtn" disabled class="btn btn-default minusBtn border mr-1 mybg text-white"
+                        (click)="qtyDecre(productDetails)">-</button><span 
+                        class="border pt-1 pr-2 pl-2 pb-2 mt-3 rounded font-weight-bold" >{{productDetails.productQty}}</span><button
+                        id="plusBtn" class="btn btn-default border ml-1 mybg plusBtn text-white" (click)="qtyIncre(productDetails)">+
+                    </button>
+                    </div>
+                    <div *ngIf= "productDetails.productQty>1">
+                        <button id="minusBtn" class="btn btn-default minusBtn border mr-1 mybg text-white"
+                        (click)="qtyDecre(productDetails)">-</button><span 
+                        class="border pt-1 pr-2 pl-2 pb-2 mt-3 rounded font-weight-bold" >{{productDetails.productQty}}</span><button
+                        id="plusBtn" class="btn btn-default border ml-1 mybg plusBtn text-white" (click)="qtyIncre(productDetails)">+
+                    </button>
+                    </div>
+                    
+                    <div class="d-none">{{productDetails.productName}}</div>
+                    <div class="w-100 rmvPar">
+                        <input type="button" value="Remove from Cart"
+                            class=" mx-auto btn btn-danger removeFromCart form-control d-block mt-1"
+                             (click)="removeFromCart(productDetails)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center mt-2 mb-2 ">
+        <div class="shadow form-control">
+            <span class="float-left font-weight-bold">Total</span><span class="float-right font-weight-bold">₦{{totalPrice}}</span>
+        </div>
+        <br>
+        <a class="btn mybg text-white " routerLink="/ojapayment" >Continue to Checkout</a>
+    </div>
+</div>
+<div *ngIf = "!(cartProducts.length>=1)" style="height: 300px;">
+    <div class="card shadow text-center p-5">
+        <h1 ><span class="text-danger">EMPTY CART!!!</span><br><span>Go add to your cart</span> </h1>
+    </div>
+    
+</div>

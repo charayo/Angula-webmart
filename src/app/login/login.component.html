@@ -1,0 +1,37 @@
+<form (ngSubmit)="onLogin(form)" #form="ngForm">
+    <div class="mt-2 text-center">
+        <h2>Login</h2>
+        <h5>with your social network</h5>
+        <a href=""><img  class="mr-2" src="https://pics.freeicons.io/uploads/icons/png/2659939281579738432-512.png" alt=""
+            style="width:40px;"></a>
+        <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkAxTQOoe_09Sa-D0Wzagf59pdtKVM2sAAKcBH05ivd_QcQLbsHOSZqc057QHTC5Tkjxg&usqp=CAU"
+            alt="" style="width:50px;"></a>
+    </div>  
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text fas fa-user"></span>
+        </div>               
+        <input type="text" class="form-control" placeholder="Username" name="loginId" ngModel>
+    </div>
+    <div class="input-group mt-3 mb-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text fas fa-lock"></span>
+        </div>               
+        <input type="{{textType}}" class="form-control" placeholder="Password" name="password" ngModel>
+        <div class="input-group-append" *ngIf="textType=='password'">
+            <span class="input-group-text fas fa-eye"  (click)="textType='text'"></span>
+        </div> 
+        <div class="input-group-append" *ngIf = "textType=='text'">
+            <span class="input-group-text fas fa-eye-slash"  (click)="textType='password'"></span>
+        </div> 
+    </div>
+    
+    <input type="checkbox" name="" id=""><span class="ml-1">Remember me</span><span class="float-right">Forgot password?</span>
+    <div class="mt-2">
+        <button class="form-control btn btn-primary" type="submit">Log in</button>
+    </div>
+    <div class="text-center mt-2">
+        <p>Not a member? <span class="text-primary" (click)="this.myservice.signup=true;" style="cursor: pointer;">Sign up</span></p>
+    </div>
+</form>

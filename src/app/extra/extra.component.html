@@ -1,0 +1,14 @@
+<table class="table-responsive">
+    <thead>
+        <th>User Id</th>
+        <th>Title</th>
+        <th>Status</th>
+    </thead>
+    <tbody >
+        <tr *ngFor="let profile of profiles">
+            <td>{{profile.id}}</td>
+            <td>{{profile.title}}</td>
+            <td [class]='this.profile.completed==true ? "text-success" : "text-danger"'>{{profile.completed}}</td>
+        </tr>
+    </tbody>
+</table>
